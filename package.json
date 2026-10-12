@@ -1,0 +1,71 @@
+{
+  "name": "auto-push-tags",
+  "displayName": "Auto Push Tags",
+  "description": "Asks whether to push a Git tag to the remote right after you create it.",
+  "icon": "images/logo.png",
+  "version": "0.1.0",
+  "publisher": "alcyon-dev",
+  "author": {
+    "name": "Alcyon Technologies",
+    "email": "dev@alcyon.dev"
+  },
+  "repository": "https://github.com/Alcyon-Dev/vscode-ext-auto-push-tags",
+  "license": "ISC",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Auto Push Tags",
+      "properties": {
+        "autoPushTags.mode": {
+          "type": "string",
+          "enum": [
+            "ask",
+            "always",
+            "never"
+          ],
+          "enumDescriptions": [
+            "Ask whether to push each new tag.",
+            "Push each new tag without asking.",
+            "Never push and never ask."
+          ],
+          "default": "ask",
+          "description": "What to do when a new Git tag is created locally."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "~1.80.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}
